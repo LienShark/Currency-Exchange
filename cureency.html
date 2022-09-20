@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>銀行換兌</title>
+</head>
+<body>
+	<h1>銀行換兌服務</h1>
+	<input id = "currency" type="text" name="currency">
+	<select id = "option">
+		<option value = "nt2us">台幣換美元</option>
+		<option value = "us2nt">美元換台幣</option>
+	</select>
+	<button id = "submit">換算</button>
+
+	<hr>
+
+	<div id = 'result'></div>
+
+	<script type="text/javascript">
+		var optionSelect = document.getElementById('option');
+
+		var submitBtn =document.getElementById('submit');
+
+		submitBtn.addEventListener('click' , function(){
+			var money = document.getElementById('currency').value;
+			var option = optionSelect.value;
+			var result = document.getElementById('result');
+
+			console.log(money);
+			console.log(option);
+
+			if(money === isNaN || money === ''){
+				result.innerHTML = '<h4>請輸入正確數字</h4>';
+				}
+			else if (option === 'nt2us') {
+				var realMoney = parseFloat(money)/30;
+				result.innerHTML = 'US ' + realMoney.toFixed(2);
+			}else if(option === 'us2nt'){
+				var realMoney = parseFloat(money)*30;
+				result.innerHTML = 'NT ' + realMoney.toFixed(2);
+			}
+		});
+	</script>
+</body>
+</html>
